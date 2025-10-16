@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Card</title>
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+
+  <div class="cover-wrapper">
+    <div class="split left"></div>
+    <div class="split right">
+      <img class="split-right-logo" src="./images/logo-hy.jpg" alt="Mở thiệp" />
+      <div class="invite-text" id="invite-text">💌 Hãy bấm để mở thiệp</div>
+    </div>
+    <div class="flower-container" id="flowers"></div>
+  </div>
+
+
+<h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci aperiam praesentium deleniti enim itaque reiciendis aut nam quibusdam magni iusto illum, obcaecati doloremque quia nobis aspernatur doloribus consequuntur, nostrum minus?</h1>
+
+  <div class="container">
+
+
+    <div class="audio-control-wrapper">
+        <div class="audio-toggle">
+          <img src="./images/audio.png" alt="" />
+        </div>
+      </div>
+      <!-- Nút toggle audio -->
+      <div class="audio-toggle" id="audioToggle">
+        <svg class="audio-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
+        </svg>
+
+        <span class="audio-line"></span>
+      </div>
+
+      <!-- Nhạc nền -->
+      <audio id="bgMusic" src="https://cdn-mp3.cinelove.me/mp3/aa11c468-d872-4815-ae41-806632db97d3.mp3" autoplay loop
+        preload="auto"></audio>
+  </div>
+
+<script src="app.js"></script>
+<!-- --------- audio -------------  -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const audio = document.getElementById("bgMusic");
+      const toggle = document.getElementById("audioToggle");
+
+      // Thử autoplay ngay khi load
+      audio.volume = 1.0;
+      const tryPlay = () => {
+        audio
+          .play()
+          .then(() => {
+            toggle.classList.add("playing");
+            toggle.classList.remove("paused");
+          })
+          .catch(() => {
+            // Nếu bị chặn autoplay, chờ lần click đầu tiên
+            const resume = () => {
+              audio.play();
+              toggle.classList.add("playing");
+              toggle.classList.remove("paused");
+              document.removeEventListener("click", resume);
+            };
+            document.addEventListener("click", resume);
+          });
+      };
+
+      tryPlay();
+
+      // Khi click nút toggle
+      toggle.addEventListener("click", (e) => {
+        e.stopPropagation(); // tránh xung đột click ngoài
+        if (audio.paused) {
+          audio.play();
+          toggle.classList.add("playing");
+          toggle.classList.remove("paused");
+        } else {
+          audio.pause();
+          toggle.classList.remove("playing");
+          toggle.classList.add("paused");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
