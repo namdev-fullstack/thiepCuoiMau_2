@@ -1,113 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wedding Card</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="cover-wrapper">
-        <div class="split left"></div>
-        <div class="split right">
-          <img
-            class="split-right-logo"
-            src="./images/logo-hy.jpg"
-            alt="Mở thiệp"
-          />
-          <div class="invite-text" id="invite-text">💌 Hãy bấm để mở thiệp</div>
-        </div>
-        <div class="flower-container" id="flowers"></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Card</title>
+   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="cover-wrapper">
+      <div class="split left"></div>
+      <div class="split right">
+        <img class="split-right-logo" src="./images/logo-hy.jpg" alt="Mở thiệp" />
+        <div class="invite-text" id="invite-text">💌 Hãy bấm để mở thiệp</div>
       </div>
-
-      <h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci
-        aperiam praesentium deleniti enim itaque reiciendis aut nam quibusdam
-        magni iusto illum, obcaecati doloremque quia nobis aspernatur doloribus
-        consequuntur, nostrum minus?
-      </h1>
-
-      <div class="audio-control-wrapper">
-        <div class="audio-toggle">
-          <img src="./images/audio.png" alt="" />
-        </div>
-      </div>
-      <!-- Nút toggle audio -->
-      <div class="audio-toggle" id="audioToggle">
-        <svg
-          class="audio-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z"
-          />
-        </svg>
-
-        <span class="audio-line"></span>
-      </div>
-
-      <!-- Nhạc nền -->
-      <audio
-        id="bgMusic"
-        src="https://cdn-mp3.cinelove.me/mp3/aa11c468-d872-4815-ae41-806632db97d3.mp3"
-        autoplay
-        loop
-        preload="auto"
-      ></audio>
+      <div class="flower-container" id="flowers"></div>
     </div>
 
-    <script src="app.js"></script>
-    <!-- --------- audio -------------  -->
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const audio = document.getElementById("bgMusic");
-        const toggle = document.getElementById("audioToggle");
+    <h1 class="heading">
+      THIỆP MỜI
+      <img src="./images/duyBang4.webp" alt="">
+    </h1>
+    <p class="sub-heading"  >Tuấn Anh & Diệu Linh</p>
 
-        // Thử autoplay ngay khi load
-        audio.volume = 1.0;
-        const tryPlay = () => {
-          audio
-            .play()
-            .then(() => {
-              toggle.classList.add("playing");
-              toggle.classList.remove("paused");
-            })
-            .catch(() => {
-              // Nếu bị chặn autoplay, chờ lần click đầu tiên
-              const resume = () => {
-                audio.play();
-                toggle.classList.add("playing");
-                toggle.classList.remove("paused");
-                document.removeEventListener("click", resume);
-              };
-              document.addEventListener("click", resume);
-            });
-        };
+    <img class="icon-header" src="./images/text-phuc.png" alt="">
 
-        tryPlay();
+    <div class="header-time">
+      <p class="header-time-text">12:00 - Thứ 5</p>
+      <p class="header-date">12 . 10 . 2025</p>
+    </div>
 
-        // Khi click nút toggle
-        toggle.addEventListener("click", (e) => {
-          e.stopPropagation(); // tránh xung đột click ngoài
-          if (audio.paused) {
-            audio.play();
+    <!-- ------ Banner ---------------  -->
+    <div class="banner">
+      <img class="banner-img-left" src="./images/duyBang.png" alt="">
+      <img class="banner-img" src="./images/anh1.png" alt="">
+    </div>
+
+
+    <!-- -------------- family ----------  -->
+    <div class="family">
+      <img src="./images/heart1.png" alt="">
+      <div class="family-groom" data-aos="fade-right"
+            data-aos-duration="800"
+            data-aos-easing="linear">
+        <h4>Nhà Trai</h4>
+        <p>Bà: Nguyễn Thị Bẩy</p>
+        <p>Ông: Lưu Văn Quốc</p>
+        <span>Tân Bình, Thái Bình</span>
+      </div>
+      <div class="family-bride" data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-easing="linear">
+        <h4>Nhà Gái</h4>
+        <p>Ông: Lưu Văn Quốc</p>
+        <p>Bà: Nguyễn Thị Hương</p>
+        <span>Bố Trạch, Quảng Bình</span>
+      </div>
+    </div>
+    <img src="./images/wedding divider8.webp" class="wedding-divider-header" alt="">
+    <p class="header-label">Trân Trọng Thông Báo Lễ Thành Hôn Của</p>
+    <div class="header-name" data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-easing="linear">
+      <p class="header-name-text">Nguyễn Tuấn Anh
+        <br>
+        &
+        <br>
+        Phan Diệu Linh
+      </p>
+    </div>
+    <div class="photo-gallery">
+      <img src="./images/anh1.png" alt="Wedding 1" data-aos="fade-right"
+            data-aos-duration="800"
+            data-aos-easing="linear"/>
+      <img src="./images/anh4.jpg" alt="Wedding 2" class=" center"  data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-easing="linear"/>
+      <img src="./images/anh2.jpg" alt="Wedding 3" data-aos="fade-left"
+            data-aos-duration="800"
+            data-aos-easing="linear"/>
+    </div>
+
+    <p class="header-label">TRÂN TRỌNG KÍNH MỜI</p>
+    <p class="header-label-fullName"  data-aos="zoom-in-up"
+            data-aos-duration="700"
+            data-aos-easing="linear">Anh Nguyễn Nam</p>
+    <img class="header-label-image" src="./images/text-phuc.png" alt="">
+    <p class="header-label">THAM DỰ TIỆC MỪNG LỄ THÀNH HÔN</p>
+    <p class="header-label-sub">Vào Lúc</p>
+    <div class="header-time-body">
+      <p class="header-time-item header-time-text">12 Giờ 00</p>
+      <p class="header-time-item center">Thứ 5
+        <br>
+        <Strong class="header-time-item-strong">12</Strong>
+        <br>
+        Tháng 10
+      </p>
+      <p class="header-time-item right">Năm 2025</p>
+    </div>
+    <p class="header-time-body-sub">(Tức Ngày 18 Tháng 9 Năm Ất Tỵ)</p>
+
+    <div class="address">
+      <img src="./images/wedding divider-vertical.webp" alt="">
+
+      <p class="address-heading">BUỔI TIỆC ĐƯỢC TỔ CHỨC TẠI</p>
+      <div class="address-body">
+        <h2>TÒA HUDLAND TOWER</h2>
+        <p class="address-body-text">Số xxx, Phường xxx  
+          <br>
+          Quận xxx, HÀ NỘI</p>
+          <a href="" class="address-body-link">Xem Bản Đồ</a>
+      </div>
+    </div>
+
+    <div class="album">
+    <img src="./images/wedding divider8.webp" class="wedding-divider-header" alt="">
+
+      <h2>Album Ảnh Cưới</h2>
+      <div class="album-body">
+        <img
+        data-aos="fade-right"
+            data-aos-duration="500"
+            data-aos-easing="linear"
+        src="./images/anh1.png" alt="">
+        <img
+        data-aos="fade-left"
+            data-aos-duration="1000"
+            data-aos-easing="linear"
+        src="./images/anh6.png" alt="">
+        <img
+        data-aos="fade-right"
+            data-aos-duration="1000"
+            data-aos-easing="linear"
+        src="./images/anh7.jpg" alt="">
+
+        <img 
+        data-aos="fade-left"
+            data-aos-duration="1500"
+            data-aos-easing="linear"
+           src="./images/anh5.png" alt="">
+      </div>
+    </div>
+    <img class="savethedate" src="./images/savetheDate.png" alt="">
+    <div class="banner-footer"  data-aos="fade-up"
+            data-aos-duration="500"
+            data-aos-easing="linear">
+      <img src="./images/anh4.jpg" alt="">
+    </div>
+
+
+
+<!-- -------------- LỜI CHÚC ----------------  -->
+        <div class="wish-form">
+          <h3>💌 Gửi lời chúc đến cô dâu & chú rể</h3>
+          <form id="wishForm">
+            <input type="text" name="name" placeholder="Tên của bạn" required />
+            <textarea
+              name="message"
+              placeholder="Lời chúc của bạn..."
+              required
+            ></textarea>
+            <button type="submit">Gửi lời chúc</button>
+          </form>
+          <p id="wishStatus"></p>
+        </div>
+
+
+    <!-- ------------------------------- Audio ----------------------  -->
+    <div class="audio-control-wrapper">
+      <div class="audio-toggle">
+        <img src="./images/audio.png" alt="" />
+      </div>
+    </div>
+    <!-- Nút toggle audio -->
+    <div class="audio-toggle" id="audioToggle">
+      <svg class="audio-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+        stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z" />
+      </svg>
+
+      <span class="audio-line"></span>
+    </div>
+
+
+ <!-- ---------------- qr ----------------  -->
+        <div class="transfer-card">
+          <!-- <img src="images/baoLiXi.png" class="transfer-card-pos1" alt="" /> -->
+          <!-- QR CODE -->
+          <p class="transfer-card-title">Mừng Cưới</p>
+          <div class="transfer-card__qr">
+            <img id="qr-image" src="./images/qr.jpg" alt="Mã QR chuyển khoản" />
+          </div>
+
+          <!-- THÔNG TIN CHUYỂN KHOẢN -->
+          <div class="transfer-info">
+            <div class="transfer-row">
+              <span class="transfer-row__label">Tên tài khoản:</span>
+              <span class="transfer-row__value" id="acc-name"
+                >NGUYỄN VĂN NAM</span
+              >
+            </div>
+
+            <div class="transfer-row">
+              <span class="transfer-row__label">Ngân hàng:</span>
+              <span class="transfer-row__value" id="bank-name"
+                >MB Bank - CN Hà Nội</span
+              >
+            </div>
+
+            <div class="transfer-row">
+              <span class="transfer-row__label">Số tài khoản:</span>
+              <div style="display: flex; align-items: center; gap: 6px">
+                <span class="transfer-row__value" id="acc-number"
+                  >0123456789</span
+                >
+                <button class="copy-btn" data-copy="acc-number">
+                  <img src="images/copy_icon.gif" alt="" />
+                </button>
+              </div>
+            </div>
+
+            <div class="copy-feedback" id="copy-feedback">
+              Đã sao chép số tài khoản
+            </div>
+          </div>
+        </div>
+
+ <!-- -------------- Footer -----------  -->
+        <div class="footer">
+          <img src="./images/Car.gif" alt="" />
+          <h2>Thanks</h2>
+        </div>
+    <!-- Nhạc nền -->
+    <audio id="bgMusic" src="ssshttps://cdn-mp3.cinelove.me/mp3/aa11c468-d872-4815-ae41-806632db97d3.mp3" autoplay loop
+      preload="auto"></audio>
+  </div>
+
+  <script src="app.js"></script>
+  <!-- --------- audio -------------  -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const audio = document.getElementById("bgMusic");
+      const toggle = document.getElementById("audioToggle");
+
+      // Thử autoplay ngay khi load
+      audio.volume = 1.0;
+      const tryPlay = () => {
+        audio
+          .play()
+          .then(() => {
             toggle.classList.add("playing");
             toggle.classList.remove("paused");
-          } else {
-            audio.pause();
-            toggle.classList.remove("playing");
-            toggle.classList.add("paused");
-          }
-        });
+          })
+          .catch(() => {
+            // Nếu bị chặn autoplay, chờ lần click đầu tiên
+            const resume = () => {
+              audio.play();
+              toggle.classList.add("playing");
+              toggle.classList.remove("paused");
+              document.removeEventListener("click", resume);
+            };
+            document.addEventListener("click", resume);
+          });
+      };
+
+      tryPlay();
+
+      // Khi click nút toggle
+      toggle.addEventListener("click", (e) => {
+        e.stopPropagation(); // tránh xung đột click ngoài
+        if (audio.paused) {
+          audio.play();
+          toggle.classList.add("playing");
+          toggle.classList.remove("paused");
+        } else {
+          audio.pause();
+          toggle.classList.remove("playing");
+          toggle.classList.add("paused");
+        }
       });
+    });
+  </script>
+
+  <script src="form.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
     </script>
-  </body>
+</body>
+
 </html>
